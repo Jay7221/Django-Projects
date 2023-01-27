@@ -1,0 +1,19 @@
+<div>
+    <a href="{% url 'post-create' %}">Add Post</a>
+</div>
+<div>
+    {% for post in posts %}
+    <div>
+        <h1>{{post.title}}</h1>
+    </div>
+    <div>
+        <a href="{% url 'post-detail' post.id %}">View</a>
+    </div>
+    <div>
+        <a href="{% url 'post-update' post.id %}">Update</a>
+    </div>
+    <div>
+        <a href="{% url 'post-delete' post.id %}">Delete</a>
+    </div>
+    {% endfor %}
+</div>

@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+
+{% block body %}
+<a href="{% url 'event-create' %}"> Add Event </a>
+<div>
+    {% for event in events %}
+    <h1>
+        {{event.title}}
+    </h1>
+    <a href="{% url 'event-details' event.id %}">View</a>
+    {% endfor %}
+</div>
+</div>
+{% endblock body %}

@@ -1,0 +1,39 @@
+"""artcircle URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/4.1/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path, include
+from . import views
+from .views import EventList, EventDetails, EventCreate, EventUpdate, SignUp
+
+
+urlpatterns = [
+    path('', views.loginPage, name='initial-login'),
+    path('login', views.loginPage, name='login'),
+    path('signup', SignUp.as_view(), name='sign-up'),
+    path('home', views.homePage, name='home'),
+
+    path('events', EventList.as_view(), name='events'),
+    path('events/details/<int:pk>', EventDetails.as_view(), name='event-details'),
+    path('events/details/<int:pk>/settings',
+         EventUpdate.as_view(), name='event-update'),
+    path('events/create-event', EventCreate.as_view(), name='event-create'),
+
+    path('members', views.viewMembers, name='members'),
+    path('members/profile/<int:pk>', views.memberProfile, name='member-details'),
+
+    path('members/profile/<int:pk>/settings',
+         views.profileSettings, name='profile-settings'),
+]

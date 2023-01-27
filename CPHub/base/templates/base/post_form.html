@@ -1,0 +1,10 @@
+<div>
+    <a href="{% url 'post-list' %}"><button>Go Back</button></a>
+</div>
+<div>
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type = "submit" value = "Create" />
+    </form>
+</div>
